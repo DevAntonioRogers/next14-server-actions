@@ -1,12 +1,21 @@
+"use client";
+
 import clsx from "clsx";
+import { ReactNode } from "react";
+
+interface buttonProps {
+  type?: "button" | "submit" | "reset";
+  text: string | ReactNode;
+  onClick?: () => void;
+  actionButton?: boolean;
+}
 
 const Button = ({
   type,
   text,
   onClick,
   actionButton,
-  classname,
-}) => {
+}: buttonProps) => {
   return (
     <>
       <button

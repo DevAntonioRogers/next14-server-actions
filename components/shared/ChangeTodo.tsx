@@ -2,8 +2,9 @@ import { todoStatus } from "@/app/actions/todoActions";
 import Form from "../ui/Form";
 import Button from "../ui/Button";
 import { AiOutlineCheckCircle } from "react-icons/ai";
+import { todoType } from "@/types/todoTypes";
 
-const ChangeTodo = ({ todo }) => {
+const ChangeTodo = ({ todo }: { todo: todoType }) => {
   return (
     <Form action={todoStatus}>
       <input

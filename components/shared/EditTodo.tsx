@@ -2,18 +2,24 @@
 
 import { edit } from "@/app/actions/todoActions";
 import Form from "../ui/Form";
+import Input from "../ui/Input";
 import { BiEdit } from "react-icons/bi";
 import { useState } from "react";
 import Button from "../ui/Button";
+import { todoType } from "@/types/todoTypes";
 
-const EditTodo = ({ todo }) => {
+const EditTodo = ({ todo }: { todo: todoType }) => {
   const [editTodo, setEditTodo] = useState(false);
 
   const handleEdit = () => {
     setEditTodo(!editTodo);
   };
+
+  const handleSubmit = () => {
+    setEditTodo(false);
+  };
   return (
-    <div className="flex gap-5">
+    <div className="flex gap-5 items-center">
       <Button
         onClick={handleEdit}
         text={<BiEdit />}
@@ -21,26 +27,21 @@ const EditTodo = ({ todo }) => {
       />
 
       {editTodo ? (
-        <Form action={edit}>
-          <input
+        <Form action={edit} onSubmit={handleSubmit}>
+          <Input
             name="inputId"
             value={todo.id}
-            className="border-gray-700 border"
             type="hidden"
           />
+          <div className="flex justify-center">
+            <Input
+              type="text"
+              name="newTitle"
+              placeholder="Edit Todo..."
+            />
 
-          <input
-            type="text"
-            name="newTitle"
-            placeholder="Edit Todo..."
-            className="border-gray-700 border"
-          />
-
-          <Button
-            type="submit"
-            classname="bg-orange-700"
-            text="Save"
-          />
+            <Button type="submit" text="Save" />
+          </div>
         </Form>
       ) : null}
     </div>

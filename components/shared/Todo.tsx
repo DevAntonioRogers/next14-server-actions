@@ -1,8 +1,9 @@
 import EditTodo from "./EditTodo";
 import DeleteTodo from "./DeleteTodo";
 import ChangeTodo from "./ChangeTodo";
+import { todoType } from "@/types/todoTypes";
 
-const Todo = ({ todo }) => {
+const Todo = ({ todo }: { todo: todoType }) => {
   const todoStyle = {
     textDecoration:
       todo.isCompleted === true ? "line-through" : "none",
@@ -11,7 +12,7 @@ const Todo = ({ todo }) => {
 
   return (
     <div
-      className="w-full  flex items-center justify-between bg-white py-2 px-20 rounded-2xl"
+      className="w-full  flex items-center justify-between bg-white py-3 px-20 rounded-2xl"
       style={todoStyle}
     >
       <ChangeTodo todo={todo} />
