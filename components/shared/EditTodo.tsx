@@ -1,9 +1,10 @@
 "use client";
 
-import { edit } from "@/app/actions";
+import { edit } from "@/app/actions/todoActions";
 import Form from "../ui/Form";
 import { BiEdit } from "react-icons/bi";
 import { useState } from "react";
+import Button from "../ui/Button";
 
 const EditTodo = ({ todo }) => {
   const [editTodo, setEditTodo] = useState(false);
@@ -13,9 +14,12 @@ const EditTodo = ({ todo }) => {
   };
   return (
     <div className="flex gap-5">
-      <button onClick={handleEdit}>
-        <BiEdit />
-      </button>
+      <Button
+        onClick={handleEdit}
+        text={<BiEdit />}
+        actionButton
+      />
+
       {editTodo ? (
         <Form action={edit}>
           <input
@@ -32,7 +36,11 @@ const EditTodo = ({ todo }) => {
             className="border-gray-700 border"
           />
 
-          <button type="submit">Save</button>
+          <Button
+            type="submit"
+            classname="bg-orange-700"
+            text="Save"
+          />
         </Form>
       ) : null}
     </div>
